@@ -946,6 +946,15 @@ describe 'parser'
                     ]
                 }
 
+            it 'when at end of array'
+                (statements "[\n  a\n  b\n  // this is a comment\n]") should contain fields {
+                    is statements
+                    statements [
+                        {variable ['a']}
+                        {variable ['b']}
+                    ]
+                }
+
             it 'when at the end of a line on windows'
                 (statements "a // this is a comment\r\nb") should contain fields {
                     is statements
